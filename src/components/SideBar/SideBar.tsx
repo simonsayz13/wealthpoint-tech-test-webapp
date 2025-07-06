@@ -19,17 +19,25 @@ import FeatureCheckbox from "./FeatureCheckbox";
 import type { Features } from "../../types/type";
 
 const Sidebar = () => {
-  const { setLoadingResult, setResults, loadingResult, week, setWeek } =
-    useAppContext();
+  const {
+    setLoadingResult,
+    setResults,
+    loadingResult,
+    week,
+    setWeek,
+    setSelectedOA,
+  } = useAppContext();
   const [numOfLocations, setNumOfLocations] = useState<number>(1);
   const [minPopulation, setMinPopulation] = useState<number>(2000);
   const [features, setFeatures] = useState<Features>({
-    closestCompetitor: false,
+    competitorDistance: false,
     competitorDensity: false,
     competitorRadius: 3,
   });
 
   const onClickResult = async () => {
+    setResults([]);
+    setSelectedOA(null);
     setLoadingResult(true);
     const url = buildOptimalLocationsURL(
       numOfLocations,
@@ -139,9 +147,9 @@ const Sidebar = () => {
             Scoring Metrics
           </Typography>
           <FeatureCheckbox
-            name="closestCompetitor"
-            label="Closest Competitor"
-            checked={features.closestCompetitor}
+            name="competitorDistance"
+            label="Competitor Distance"
+            checked={features.competitorDistance}
             onChange={handleCheckboxChange}
           />
           <FeatureCheckbox

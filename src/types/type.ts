@@ -1,5 +1,5 @@
 export type Features = {
-  closestCompetitor: boolean;
+  competitorDistance: boolean;
   competitorDensity: boolean;
   competitorRadius: number;
 };

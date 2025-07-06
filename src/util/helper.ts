@@ -7,9 +7,9 @@ export const buildOptimalLocationsURL = (
   minPopulation: number,
   features: Features
 ) => {
-  const { closestCompetitor, competitorDensity, competitorRadius } = features;
+  const { competitorDistance, competitorDensity, competitorRadius } = features;
 
-  let url = `${baseURL}/optimal-locations?locations=${noLocation}&week=${week}&min_population=${minPopulation}&closest_competitor=${closestCompetitor}&competitor_density=${competitorDensity}`;
+  let url = `${baseURL}/optimal-locations?locations=${noLocation}&week=${week}&min_population=${minPopulation}&use_competitor_distance=${competitorDistance}&use_competitor_density=${competitorDensity}`;
 
   if (competitorDensity) url += `&competitor_radius=${competitorRadius}`;
 
